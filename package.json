@@ -1,6 +1,6 @@
 {
   "name": "temp-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.13",
@@ -32,9 +32,6 @@
     "release:github": "dotenv -- conventional-github-releaser"
   },
   "standard-version": {
-    "scripts": {
-      "postbump": "./generateBadge.sh"
-    },
     "types": [
       {
         "type": "chore",
