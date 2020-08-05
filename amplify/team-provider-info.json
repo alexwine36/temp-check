@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-tempcheck-dev-165410-authRole",
+            "UnauthRoleArn": "arn:aws:iam::012242143738:role/amplify-tempcheck-dev-165410-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::012242143738:role/amplify-tempcheck-dev-165410-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-tempcheck-dev-165410-deployment",
+            "UnauthRoleName": "amplify-tempcheck-dev-165410-unauthRole",
+            "StackName": "amplify-tempcheck-dev-165410",
+            "StackId": "arn:aws:cloudformation:us-east-1:012242143738:stack/amplify-tempcheck-dev-165410/6ac143a0-d6a5-11ea-836e-12301089d57f",
+            "AmplifyAppId": "d2l5hluli65hda"
+        },
+        "categories": {
+            "auth": {
+                "tempcheck306a20f3": {}
+            }
+        }
+    }
+}

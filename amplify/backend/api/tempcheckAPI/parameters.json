@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "tempcheckAPI",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authtempcheck306a20f3",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

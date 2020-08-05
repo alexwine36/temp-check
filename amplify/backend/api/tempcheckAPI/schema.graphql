@@ -1,0 +1,39 @@
+type Family @model {
+  id: ID!
+  familyName: String!
+  carPoolNumber: Int!
+  parents: [Parent] @connection(keyName: "byFamily", fields: ["id"])
+  students: [Student] @connection(keyName: "byFamily", fields: ["id"])
+}
+
+type Parent @model @key(name: "byFamily", fields: ["familyID"]) {
+  id: ID!
+  name: String
+  phoneNumber: String!
+  familyID: ID!
+  family: Family @connection(fields: ["familyID"])
+}
+
+type Student @model @key(name: "byFamily", fields: ["familyID"]) {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  grade: String!
+  familyID: ID!
+  family: Family @connection(fields: ["familyID"])
+  checks: [Checks] @connection(keyName: "byStudent", fields: ["id"])
+}
+
+type Checks @model @key(name: "byStudent", fields: ["studentID", "schoolDay"]) {
+  id: ID!
+  studentID: ID!
+  student: Student @connection(fields: ["studentID"])
+  schoolDay: AWSDate!
+  editor: String
+  # content: String!
+  symptoms: Boolean!
+  tempUnder: Boolean!
+  temp: Float
+  cough: Boolean!
+  shortBreath: Boolean!
+}
