@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.13",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -14,6 +16,7 @@
     "aws-amplify": "^3.0.22",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
@@ -21,7 +24,94 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "commit": "run-s commit:*",
+    "commit:cz": "git cz -a",
+    "release": "run-s release:*",
+    "release:version": "standard-version -a",
+    "release:github": "dotenv -- conventional-github-releaser"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "./generateBadge.sh"
+    },
+    "types": [
+      {
+        "type": "chore",
+        "section": "Others",
+        "hidden": false
+      },
+      {
+        "type": "revert",
+        "section": "Reverts",
+        "hidden": false
+      },
+      {
+        "type": "feat",
+        "section": "Features",
+        "hidden": false
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes",
+        "hidden": false
+      },
+      {
+        "type": "improvement",
+        "section": "Feature Improvements",
+        "hidden": false
+      },
+      {
+        "type": "docs",
+        "section": "Docs",
+        "hidden": false
+      },
+      {
+        "type": "style",
+        "section": "Styling",
+        "hidden": false
+      },
+      {
+        "type": "refactor",
+        "section": "Code Refactoring",
+        "hidden": false
+      },
+      {
+        "type": "perf",
+        "section": "Performance Improvements",
+        "hidden": false
+      },
+      {
+        "type": "test",
+        "section": "Tests",
+        "hidden": false
+      },
+      {
+        "type": "build",
+        "section": "Build System",
+        "hidden": false
+      },
+      {
+        "type": "ci",
+        "section": "CI",
+        "hidden": false
+      }
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,5 +127,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@types/react-router-dom": "^5.1.5",
+    "commitizen": "^4.1.2",
+    "conventional-github-releaser": "^3.1.5",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "hygen-typescript-react-redux": "^1.0.2",
+    "npm-run-all": "^4.1.5",
+    "standard-version": "^8.0.2"
   }
 }
