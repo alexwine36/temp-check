@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
 import { render } from "@testing-library/react";
-import InputFieldRenderer from '.';
+import InputFieldRenderer from ".";
+import { Formik } from "formik";
 
-describe('<InputFieldRenderer />', () => {
-  test('Renders without exploding', () => {
+describe("<InputFieldRenderer />", () => {
+  test("Renders without exploding", () => {
     render(
-      <InputFieldRenderer/>
+      <Formik
+        initialValues={{
+          sample: "",
+        }}
+        onSubmit={() => {}}
+      >
+        <InputFieldRenderer name="sample" label={"sample"} />
+      </Formik>
     );
   });
 });

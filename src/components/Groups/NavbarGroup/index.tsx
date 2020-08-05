@@ -29,6 +29,10 @@ const links = [
     to: "/",
   },
   {
+    label: "Families",
+    to: "/families",
+  },
+  {
     label: "Add Family",
     to: "/add-family",
   },

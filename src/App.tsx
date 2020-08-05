@@ -1,10 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
-import Family, { mapListFamilys } from "./models/family";
-import callGraphQL from "./functions/graphql-wrapper";
-import { ListFamilysQuery } from "./API";
-import { listFamilys } from "./graphql/queries";
+import { RecoilRoot } from "recoil";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -13,28 +10,30 @@ import NavbarGroup from "./components/Groups/NavbarGroup";
 import { BrowserRouter as Router } from "react-router-dom";
 import RoutesPage from "./Pages/RoutesPage";
 function App() {
-  const [families, setFamilies] = React.useState<Family[]>();
+  // const [families, setFamilies] = React.useState<Family[]>();
 
-  React.useEffect(() => {
-    async function getData() {
-      try {
-        const familyData = await callGraphQL<ListFamilysQuery>(listFamilys);
-        const familys = mapListFamilys(familyData);
-        setFamilies(familys);
-      } catch (error) {
-        console.error("Error fetching familys", error);
-      }
-    }
-    getData();
-  }, []);
+  // React.useEffect(() => {
+  //   async function getData() {
+  //     try {
+  //       const familyData = await callGraphQL<ListFamilysQuery>(listFamilys);
+  //       const familys = mapListFamilys(familyData);
+  //       setFamilies(familys);
+  //     } catch (error) {
+  //       console.error("Error fetching familys", error);
+  //     }
+  //   }
+  //   getData();
+  // }, []);
   return (
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Router>
-          <NavbarGroup />
-          <RoutesPage />
-        </Router>
+        <RecoilRoot>
+          <Router>
+            <NavbarGroup />
+            <RoutesPage />
+          </Router>
+        </RecoilRoot>
         {/* <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />

@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { Container, Box } from "@material-ui/core";
 import HomePage from "../HomePage";
 import AddFamilyForm from "../../components/Forms/AddFamilyForm";
+import FamiliesPage from "../FamiliesPage";
 
 interface Props {
   sample?: string;
@@ -15,6 +16,9 @@ const RoutesPage = (props: Props) => {
         <Switch>
           <Route exact path="/add-family">
             <AddFamilyForm />
+          </Route>
+          <Route exact path="/families">
+            <FamiliesPage />
           </Route>
           <Route exact path="/">
             <HomePage />
