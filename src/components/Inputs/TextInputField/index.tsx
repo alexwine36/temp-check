@@ -6,11 +6,12 @@ import { TextField } from "@material-ui/core";
 interface Props {
   name: string;
   label: string;
+  type?: string;
 }
 
 const TextInputField = (props: Props) => {
   const classes = useStyles();
-  const { name, label } = props;
+  const { name, label, type } = props;
   return (
     <Field name={name}>
       {({ field, form }: FieldProps) => (
@@ -25,6 +26,7 @@ const TextInputField = (props: Props) => {
             onChange={field.onChange}
             onBlur={field.onBlur}
             fullWidth
+            type={type}
           ></TextField>
         </React.Fragment>
       )}

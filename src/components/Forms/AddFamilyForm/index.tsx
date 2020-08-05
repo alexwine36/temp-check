@@ -2,7 +2,8 @@ import React from "react";
 import useStyles from "./index.styles";
 import { Formik, Form } from "formik";
 import InputFieldRenderer from "../../Inputs/InputFieldRenderer";
-import { Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
+import { addFamilyMutation } from "../../../models/family";
 
 interface Props {
   sample?: string;
@@ -14,8 +15,9 @@ const FamilyFields = [
     label: "Family Name",
   },
   {
-    name: "carPoolName",
+    name: "carPoolNumber",
     label: "Car Pool Number",
+    type: "number",
   },
 ];
 
@@ -28,14 +30,26 @@ const AddFamilyForm = (props: Props) => {
         familyName: "",
         carPoolNumber: 0,
       }}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
+        setSubmitting(true);
+
         console.log(values);
+        try {
+          const res = await addFamilyMutation({
+            input: values,
+          });
+          console.log(res);
+          resetForm();
+          setSubmitting(false);
+        } catch (error) {
+          console.log(error);
+        }
       }}
     >
       {({ values }) => {
         return (
           <Form>
-            <Typography variant="subtitle1">Add Family</Typography>
+            <Typography variant="overline">Add Family</Typography>
             {FamilyFields.map((field) => {
               return (
                 <InputFieldRenderer
@@ -45,6 +59,9 @@ const AddFamilyForm = (props: Props) => {
                 />
               );
             })}
+            <Button variant="outlined" color="primary" type="submit">
+              Submit
+            </Button>
           </Form>
         );
       }}

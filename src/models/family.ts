@@ -1,5 +1,11 @@
-import { ListFamilysQuery } from "../API";
+import {
+  ListFamilysQuery,
+  CreateFamilyMutationVariables,
+  CreateFamilyMutation,
+} from "../API";
 import { GraphQLResult } from "@aws-amplify/api";
+import { createFamily } from "../graphql/mutations";
+import callGraphQL from "../functions/graphql-wrapper";
 
 interface Family {
   id?: string;
@@ -21,6 +27,12 @@ function mapListFamilysQuery(
     ) || []
   );
 }
+
+export const addFamilyMutation = (data: CreateFamilyMutationVariables) => {
+  return callGraphQL<CreateFamilyMutation>(createFamily, {
+    ...data,
+  });
+};
 
 export default Family;
 export { mapListFamilysQuery as mapListFamilys };
