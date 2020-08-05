@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
 import { render } from "@testing-library/react";
-import RoutesPage from '.';
+import RoutesPage from ".";
+import { BrowserRouter as Router } from "react-router-dom";
 
-describe('<RoutesPage />', () => {
-  test('Renders without exploding', () => {
+describe("<RoutesPage />", () => {
+  test("Renders without exploding", () => {
     render(
-      <RoutesPage/>
+      <Router>
+        <RoutesPage />
+      </Router>
     );
   });
 });
