@@ -30,7 +30,7 @@
     "release": "run-s release:*",
     "release:version": "standard-version -a",
     "release:tags": "git push origin master",
-    "release:github": "dotenv -- conventional-github-releaser"
+    "release:github": "dotenv conventional-github-releaser"
   },
   "standard-version": {
     "types": [
